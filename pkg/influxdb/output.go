@@ -73,7 +73,8 @@ func New(params output.Params) (*Output, error) {
 	opts := influxdbclient.DefaultOptions().
 		SetTLSConfig(&tls.Config{
 			InsecureSkipVerify: conf.InsecureSkipTLSVerify.Bool, //nolint:gosec
-		})
+		}).
+		SetHTTPRequestTimeout(60) // testing with overriding default value for slow network
 	if conf.Precision.Valid {
 		opts.SetPrecision(time.Duration(conf.Precision.Duration))
 	}
