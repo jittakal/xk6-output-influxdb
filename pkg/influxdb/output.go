@@ -21,7 +21,7 @@ import (
 
 func init() {
 	// disable the internal influxdb log
-	influxdblog.Log = nil
+	influxdblog.Log.SetLogLevel(influxdblog.DebugLevel)
 }
 
 // FieldKind defines Enum for tag-to-field type conversion
